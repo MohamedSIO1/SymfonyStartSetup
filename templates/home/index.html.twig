@@ -1,20 +1,7 @@
-{% extends 'base.html.twig' %}
+{# un foreach / for in - pour afficher tous les articles de la table articles - ce qui a dans des {{ variable }} sont des variables qui s'insère directement dans le html #}
+{% for film in films %}
+{# on met pas l'undersocre (_) à "la_categorie" et "date_creation" car Twig les enlève automatiquement et si on les laisse ça creer des erreurs, mais à part ici, les deux champs ont bien un underscore - par exemple "ma_maison" deviens "mamaison" en Twig #}
+<h3>{{ film.id }} - {{ film.titre}}  - <a href="{{ path('show_film', {'id': film.id})  }}">Plus d'info</a> </h3> 
 
-{% block title %}Hello HomeController!{% endblock %}
 
-{% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from benxito:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/sofia/my_first_app/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/sofia/my_first_app/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
-{% endblock %}
+{% endfor%}

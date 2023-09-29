@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Informations sur le film</h1>
+
+    <p>Titre du film : {{ film.titre }}</p>
+    <p>Description : {{ film.description }}</p>
+    <p>Année de sortie : {{ film.dateSortie  | date('d/m/Y H:i:s')}}</p>
+    <p>Réalisateur : {{ film.realisateur }}</p>
+    <p>Durée : {{ film.duree / 60 }} minutes</p>
+    
+    <!-- Ajoutez d'autres informations sur le film ici -->
+{% endblock %}
