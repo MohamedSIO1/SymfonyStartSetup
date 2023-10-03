@@ -1,7 +1,41 @@
 {# un foreach / for in - pour afficher tous les articles de la table articles - ce qui a dans des {{ variable }} sont des variables qui s'insère directement dans le html #}
 {% for film in films %}
 {# on met pas l'undersocre (_) à "la_categorie" et "date_creation" car Twig les enlève automatiquement et si on les laisse ça creer des erreurs, mais à part ici, les deux champs ont bien un underscore - par exemple "ma_maison" deviens "mamaison" en Twig #}
-<h3>{{ film.id }} - {{ film.titre}}  - <a href="{{ path('show_film', {'id': film.id})  }}">Plus d'info</a> </h3> 
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 10px;
+        text-align: left;
+        border: 1px solid #ddd;
+        width: 33%; /* Chaque colonne occupe 33% de la largeur */
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    a {
+        text-decoration: none;
+        color: #007bff;
+    }
+</style>
+
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Plus d'info</th>
+    </tr>
+    <tr>
+        <td>{{ film.id }}</td>
+        <td>{{ film.titre }}</td>
+        <td><a href="{{ path('show_film', {'id': film.id}) }}">Plus d'info</a></td>
+    </tr>
+</table>
 
 
 {% endfor%}

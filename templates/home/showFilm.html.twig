@@ -1,13 +1,66 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Informations sur le film</h1>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
 
-    <p>Titre du film : {{ film.titre }}</p>
-    <p>Description : {{ film.description }}</p>
-    <p>Année de sortie : {{ film.dateSortie  | date('d/m/Y H:i:s')}}</p>
-    <p>Réalisateur : {{ film.realisateur }}</p>
-    <p>Durée : {{ film.duree / 60 }} minutes</p>
-    
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ddd;
+            width: 33%; /* Chaque colonne occupe 33% de la largeur */
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+        }
+    </style>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Titre</th>
+            <th>Plus d'info</th>
+        </tr>
+        <tr>
+            <td>{{ film.id }}</td>
+            <td>{{ film.titre }}</td>
+            <td><a href="{{ path('show_film', {'id': film.id}) }}">Plus d'info</a></td>
+        </tr>
+    </table>
+
+    <h1>Informations sur {{ film.titre }}</h1>
+
+    <table>
+        <tr>
+            <td>Titre du film</td>
+            <td>{{ film.titre }}</td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>{{ film.description }}</td>
+        </tr>
+        <tr>
+            <td>Année de sortie</td>
+            <td>{{ film.dateSortie | date('d/m/Y H:i:s') }}</td>
+        </tr>
+        <tr>
+            <td>Réalisateur</td>
+            <td>{{ film.realisateur }}</td>
+        </tr>
+        <tr>
+            <td>Durée</td>
+            <td>{{ film.duree / 60 }} minutes</td>
+        </tr>
+    </table>
+
     <!-- Ajoutez d'autres informations sur le film ici -->
 {% endblock %}
